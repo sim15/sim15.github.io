@@ -352,9 +352,11 @@ blockquote {
   text-align: center;
 
   .contact-icons {
-    font-size: 4rem;
+    font-size: 3rem;
 
     a {
+      margin: 1.5rem;
+
       i::before {
         color: var(--global-text-color);
         transition-property: all 0.2s ease-in-out;
@@ -800,7 +802,8 @@ footer.sticky-bottom {
 
 // Rouge Color Customization
 figure.highlight {
-  margin: 0 0 1rem;
+  margin: 0 0 0rem;
+  // margin: 0 0 1rem;
 }
 
 pre {

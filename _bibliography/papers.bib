@@ -1,84 +1,18 @@
 ---
 ---
 
-@string{aps = {American Physical Society,}}
-
-@book{einstein1956investigations,
+@inproceedings{ServanSchreiber2023,
+  title = {Private Access Control for Function Secret Sharing},
+  url = {http://dx.doi.org/10.1109/sp46215.2023.10179295},
+  DOI = {10.1109/sp46215.2023.10179295},
+  booktitle = {2023 IEEE Symposium on Security and Privacy (SP)},
+  publisher = {IEEE},
+  author = {Servan-Schreiber,  Sacha and Beyzerov,  Simon and Yablon,  Eli and Park,  Hyojae},
+  year = {2023},
+  month = may,
+  pages={809-828},
+  selected={true},
+  pdf={https://eprint.iacr.org/2022/1707},
   bibtex_show={true},
-  title={Investigations on the Theory of the Brownian Movement},
-  author={Einstein, Albert},
-  year={1956},
-  publisher={Courier Corporation},
-  preview={brownian-motion.gif}
-}
-
-@article{einstein1950meaning,
-  abbr={AJP},
-  bibtex_show={true},
-  title={The meaning of relativity},
-  author={Einstein, Albert and Taub, AH},
-  journal={American Journal of Physics},
-  volume={18},
-  number={6},
-  pages={403--404},
-  year={1950},
-  publisher={American Association of Physics Teachers}
-}
-
-@article{PhysRev.47.777,
-  abbr={PhysRev},
-  title={Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?},
-  author={Einstein, A. and Podolsky, B. and Rosen, N.},
-  abstract={In a complete theory there is an element corresponding to each element of reality. A sufficient condition for the reality of a physical quantity is the possibility of predicting it with certainty, without disturbing the system. In quantum mechanics in the case of two physical quantities described by non-commuting operators, the knowledge of one precludes the knowledge of the other. Then either (1) the description of reality given by the wave function in quantum mechanics is not complete or (2) these two quantities cannot have simultaneous reality. Consideration of the problem of making predictions concerning a system on the basis of measurements made on another system that had previously interacted with it leads to the result that if (1) is false then (2) is also false. One is thus led to conclude that the description of reality as given by a wave function is not complete.},
-  journal={Phys. Rev.},
-  volume={47},
-  issue={10},
-  pages={777--780},
-  numpages={0},
-  year={1935},
-  month={May},
-  publisher=aps,
-  doi={10.1103/PhysRev.47.777},
-  url={http://link.aps.org/doi/10.1103/PhysRev.47.777},
-  html={https://journals.aps.org/pr/abstract/10.1103/PhysRev.47.777},
-  pdf={example_pdf.pdf},
-  altmetric={248277},
-  dimensions={true},
-  selected={true}
-}
-
-@article{einstein1905molekularkinetischen,
-  title={{\"U}ber die von der molekularkinetischen Theorie der W{\"a}rme geforderte Bewegung von in ruhenden Fl{\"u}ssigkeiten suspendierten Teilchen},
-  author={Einstein, A.},
-  journal={Annalen der physik},
-  volume={322},
-  number={8},
-  pages={549--560},
-  year={1905},
-  publisher={Wiley Online Library}
-}
-
-@article{einstein1905movement,
-  abbr={Ann. Phys.},
-  title={Un the movement of small particles suspended in statiunary liquids required by the molecular-kinetic theory 0f heat},
-  author={Einstein, A.},
-  journal={Ann. Phys.},
-  volume={17},
-  pages={549--560},
-  year={1905}
-}
-
-@article{einstein1905electrodynamics,
-  title={On the electrodynamics of moving bodies},
-  author={Einstein, A.},
-  year={1905}
-}
-
-@book{przibram1967letters,
-  bibtex_show={true},
-  title={Letters on wave mechanics},
-  author={Einstein, Albert and Schrödinger, Erwin and Planck, Max and Lorentz, Hendrik Antoon and Przibram, Karl},
-  year={1967},
-  publisher={Vision},
-  preview={wave-mechanics.gif}
+  abstract={Function Secret Sharing (FSS; Eurocrypt 2015) allows a dealer to share a function $f$ with two or more evaluators. Given secret shares of a function f, the evaluators can locally compute secret shares of f(x) on an input x, without learning information about f. In this paper, we initiate the study of access control for FSS. Given the shares of f, the evaluators can ensure that the dealer is authorized to share the provided function. For a function family F and an access control list defined over the family, the evaluators receiving the shares of f ∈ F can efficiently check that the dealer knows the access key for f. This model enables new applications of FSS, such as: anonymous authentication in a multi-party setting, access control in private databases, and authentication and spam prevention in anonymous communication systems. Our definitions and constructions abstract and improve the concrete efficiency of several re- cent systems that implement ad-hoc mechanisms for access control over FSS. The main building block behind our efficiency improvement is a discrete-logarithm zero-knowledge proof-of-knowledge over secret-shared elements, which may be of independent interest. We evaluate our constructions and show a 50–70× reduction in computational overhead com- pared to existing access control techniques used in anonymous communication. In other applications, such as private databases, the processing cost of introducing access control is only 1.5–3× when amortized over databases with 500,000 or more items.}
 }

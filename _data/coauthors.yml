@@ -10,7 +10,7 @@
   - firstname: ["Nathan", "N."]
     url: https://en.wikipedia.org/wiki/Nathan_Rosen
 
-"Bach": 
+"Bach":
   - firstname: ["Johann Sebastian", "J. S."]
     url: https://en.wikipedia.org/wiki/Johann_Sebastian_Bach
 
@@ -32,3 +32,7 @@
 "Planck":
   - firstname: ["Max"]
     url: https://en.wikipedia.org/wiki/Max_Planck
+
+"Servan-Schreiber":
+  - firstname: ["Sacha", "S."]
+    url: https://sachaservanschreiber.com/

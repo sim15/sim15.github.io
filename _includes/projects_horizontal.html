@@ -1,40 +1,40 @@
 <div class="card-item col">
   {%- if project.redirect -%}
-  <a href="{{ project.redirect }}">
+  <a href="{{ project.redirect }}" target="_blank">
   {%- else -%}
-  <a href="{{ project.url | relative_url }}">
+  <a href="{{ project.url | relative_url }}" target="_blank">
   {%- endif -%}
-    <div class="card hoverable">
-      <div class="row g-0">
-        {%- if project.img -%}
-        <div class="card-img col-md-6">
-          {% include figure.html path=project.img alt="project thumbnail" %}
-        </div>
-        <div class="col-md-6">
-        {%- else -%}
-        <div class="col-md-12">
-        {%- endif -%}
-          <div class="card-body">
-            <h3 class="card-title text-lowercase">{{ project.title }}</h3>
-            <p class="card-text">{{ project.description }}</p>
-            <div class="row ml-1 mr-1 p-0">
-              {%- if project.github -%}
-              <div class="github-icon">
-                <div class="icon" data-toggle="tooltip" title="Code Repository">
-                  <a href="{{ project.github }}"><i class="fa-brands fa-github gh-icon"></i></a>
-                </div>
-                {%- if project.github_stars -%}
-                <span class="stars" data-toggle="tooltip" title="GitHub Stars">
-                  <i class="fa-solid fa-star"></i>
-                  <span id="{{ project.github_stars }}-stars"></span>
-                </span>
-                {%- endif -%}
-              </div>
-              {%- endif -%}
-            </div>
-          </div>
-        </div>
+
+  <div class="card hoverable">
+    <div class="d-sm-flex" style="display: flex; flex: 1 1 auto">
+      {%- if project.img -%}
+      <div class="col-md-2" style="margin: 0; padding: 0">
+        {% include figure.html path=project.img alt="project thumbnail"
+        style="height: 100%; width: 100%; object-fit: cover;"%}
       </div>
+      {%- endif -%}
+
+      <div class="card-body">
+        
+        <h5 class="card-title">{{ project.title }}</h5>
+
+        <p class="card-text" style="text-wrap: wrap">
+          {{ project.description }}
+        </p>
+        <!-- <p>
+          {%- for link in project.links %}
+          [<a href="{{link[1]}}" target="_blank">{{link[0]}}</a>]
+          {% endfor %}
+        </p> -->
+      </div>
+
     </div>
-  </a>
+    {%- if project.footnote -%}
+    <div class="card-footer">
+      <small class="text-muted">{{project.footnote}}</small>
+    </div>
+    {%- endif -%}
+  </div>
+</a>
+
 </div>
