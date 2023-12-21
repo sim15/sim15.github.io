@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: CS at <a href='https://www.cmu.edu/'>Carnegie Mellon University</a>
+subtitle: CS @ <a href='https://www.cmu.edu/'>Carnegie Mellon University</a>
 
 profile:
   align: right
@@ -10,20 +10,21 @@ profile:
   image_circular: true # crops the image to make it circular
   more_info: >
     
+    
 
 news: true  # includes a list of news items
 latest_posts: false  # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
-social: false  # includes social icons at the bottom of the page
 ---
 
-Hi! I'm Simon, an undegrad computer science student at Carnegie Mellon University. I'm broadly interested in computer science and mathematics, particularly in cryptography and theoretical computer science as a whole. More recently I've also been curious about systems and cloud computing.
+Hi! I'm Simon, an undegraduate computer science student at [Carnegie Mellon University](https://www.cmu.edu/). I'm broadly interested in computer science and mathematics, particularly in cryptography and theoretical computer science. More recently I've also been curious about systems and cloud computing.
 
-Over the past few years, I've been involved in a series of research projects with MIT's Computational Structures Group looking at privacy-preserving database access, and more recently have joined Tensordock as a Software Engineer to help expand their decentralized cloud-GPU network.
+Over the past few years, I've been involved in a series of research projects with the [Computational Structures Group](https://www.csail.mit.edu/research/computation-structures-group) @ [MIT CSAIL](https://www.csail.mit.edu/) looking at privacy-preserving database access, and more recently have joined [Tensordock](https://tensordock.com/) as a Software Engineer to help expand their decentralized cloud-GPU network.
 
-In general, I'm most excited by new problems at the intersection of theory and practice, especially using new theoretical tools to improve existing systems' privacy and performance. For some of my work in crypto and other areas, please see my projects.
+In general, I'm most excited by new problems at the intersection of theory and practice, especially using new theoretical tools to improve existing systems' privacy and performance. For some of my work in crypto and other areas, please see my [projects](/projects/).
 
-Outside of CS and Math you may find me chasing my cat, spending too much time on minesweeper puzzles, and walking on my hands. I'm also a big fan of all Boston sports teams and especially love keeping up with football and basketball.
+Outside of CS and Math you may find me chasing my cat, solving minesweeper puzzles, and walking on my hands. I'm also a big fan of Boston sports teams and especially love keeping up with football and basketball.
+
 If you'd like to chat, feel free to reach out!
 
 <!-- Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
