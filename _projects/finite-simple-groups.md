@@ -7,3 +7,7 @@ importance: 7
 category: math
 related_publications: 
 ---
+
+Links:
+* [Paper](/assets/pdf/finSimpleGroups.pdf)
+* [Slides](/assets/pdf/finSimpleGroupsSlides.pdf)

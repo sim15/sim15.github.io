@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: CS @ <a href='https://www.cmu.edu/'>Carnegie Mellon University</a>
+subtitle: sbeyzero [at] andrew.cmu.edu
 
 profile:
   align: right
@@ -23,7 +23,7 @@ Over the past few years, I've been involved in a series of research projects wit
 
 In general, I'm most excited by new problems at the intersection of theory and practice, especially using new theoretical tools to improve existing systems' privacy and performance. For some of my work in crypto and other areas, please see my [projects](/projects/).
 
-Outside of CS and Math you may find me chasing my cat, solving minesweeper puzzles, and walking on my hands. I'm also a big fan of Boston sports teams and especially love keeping up with football and basketball.
+Outside of computer science and mathematics you may find me chasing my cat, solving minesweeper puzzles, bouldering, and walking on my hands. I'm also a big fan of Boston sports teams and especially love keeping up with football and basketball.
 
 If you'd like to chat, feel free to reach out!
 

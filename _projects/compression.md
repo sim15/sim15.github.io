@@ -7,3 +7,6 @@ importance: 12
 category: math
 related_publications:
 ---
+
+Links:
+* [Paper](/assets/pdf/img_compression_paper.pdf)
