@@ -17,13 +17,11 @@ latest_posts: false  # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
 ---
 
-Hi! I'm Simon, an undegraduate at [Carnegie Mellon University](https://www.cmu.edu/) studying Computer Science. I'm broadly interested in computer science and mathematics, particularly in cryptography and theoretical computer science. More recently I've also been curious about systems and cloud computing.
+I'm an undegraduate at [Carnegie Mellon University](https://www.cmu.edu/) studying Computer Science. I enjoy exploring new problems at the intersections of theoretical computer science, mathematics, and software, especially using new theoretical tools to improve the privacy and performance of existing systems. I'm especially interested in theoretical cryptography research and have more recently been curious about systems and cloud computing. 
 
-Over the past few years, I've been involved in a series of research projects with the [Computational Structures Group](https://www.csail.mit.edu/research/computation-structures-group) @ [MIT CSAIL](https://www.csail.mit.edu/) looking at privacy-preserving database access, and more recently have joined [Tensordock](https://tensordock.com/) as a Software Engineer to help expand their decentralized cloud-GPU network.
+Previously, I worked with the [Computational Structures Group](https://www.csail.mit.edu/research/computation-structures-group) @ [MIT CSAIL](https://www.csail.mit.edu/) studying privacy-preserving database access under the mentorship of Sacha Servan-Schreiber, and more recently have joined [Tensordock](https://tensordock.com/) as a Software Engineer to help expand their decentralized cloud-GPU network.
 
-In general, I'm most excited by new problems at the intersection of theory and practice, especially using new theoretical tools to improve existing systems' privacy and performance. For some of my work in crypto and other areas, please see my [projects](/projects/).
-
-Outside of computer science and mathematics you may find me chasing my cat, solving minesweeper puzzles, bouldering, and walking on my hands. I'm also a big fan of Boston sports teams and especially love keeping up with football and basketball.
+Outside of computer science and mathematics you may find me chasing my cat, solving minesweeper puzzles, bouldering, and or walking on my hands. I'm also a big fan of Boston sports, particularly football and basketball!
 
 If you'd like to chat, feel free to reach out!
 
