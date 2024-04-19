@@ -13,9 +13,9 @@ Sharing”, in _2023 IEEE Symposium on Security and Privacy (S&P)_, IEEE, 2023.
 
 #### current + past projects:
 
-- [Private Access Control for Function Secret Sharing](/projects/pacls/){:target="_blank"}
+- [Private Access Control for Function Secret Sharing](/projects/pacls){:target="_blank"}
 
-- [Cloak: A Versatile Framework for Anonymous Authentication](/projects/cloak/){:target="_blank"}
+- [Cloak: A Versatile Framework for Anonymous Authentication](/projects/cloak){:target="_blank"}
 
 - [Authenticated Metadata-hiding Anonymous Communication](/projects/anoncom){:target="_blank"}
 
