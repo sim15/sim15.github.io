@@ -43,15 +43,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  test-update-file:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Update values.yaml
-        uses: fjogeleit/yaml-update-action@main
-        with:
-          valueFile: 'bookmarks.yaml'
-          propertyPath: 'bookmarks.version'
-          value: v1.0.1
-          commitChange: false
