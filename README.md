@@ -1,1 +1,1 @@
-run locally with docker c:
+run locally with docker 
