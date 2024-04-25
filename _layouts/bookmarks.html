@@ -1,0 +1,58 @@
+---
+layout: default
+---
+<div class="home">
+
+  <!-- <h1 class="page-heading">{% include i18n.html value="archive" default="blog" %}</h1> -->
+
+  {{ content }}
+
+  {% capture site_lang %}{{ site.lang | default: "en" }}{% endcapture %}
+
+
+  <ul class="post-archives">
+    {% for bookmark in site.data.bookmarks reversed %}
+    <li >
+        <!-- <a href="{{bookmark.url}}" target="_target">{{bookmark.title}} (<span>{{bookmark.url}}</span>)</a> -->
+        
+        <h3 style="margin-bottom: 0;"><a href="{{bookmark.url}}" target="_target">{{bookmark.title}}</a></h3>
+        {% if bookmark.notes != empty %}
+        <p  style="margin-bottom: 0; color: rgb(78, 78, 78);"><i>{{bookmark.notes}}</i></p>
+        {% endif %}
+        
+
+        <span class="post-meta">
+            {% include date.html date=bookmark.date lang=lang %} •
+            {% if bookmark.tags != empty %}
+            {% include category_links_bookmark.html tags=bookmark.tags %}
+            {% endif %}
+              <a href="{{ bookmark.waybackUrl }}" target="_target">(archive)</a>
+          </span>
+        
+    </li>
+      <!-- {% capture post_lang %}{{ post.lang | default: site_lang }}{% endcapture %}
+      {% capture lang %}{% if post_lang != site_lang %}{{ post_lang }}{% endif %}{% endcapture %} -->
+
+      <!-- <li>
+        <span class="post-meta">
+          {% include date.html date=post.date lang=lang %}
+          {% if post.categories != empty or post.tags != empty %}
+            {% include category_links.html categories=post.categories tags=post.tags %}
+          {% endif %}
+          {% if post.external-url %}
+            • <a href="{{ post.url | relative_url }}">Permalink</a>
+          {% endif %}
+        </span>
+
+        <h2>
+          {% if post.external-url %}
+            <a class="post-link" href="{{ post.external-url }}">{{ post.title | escape }} &rarr;</a>
+          {% else %}
+            <a class="post-link" href="{{ post.url | relative_url }}"{% if lang != empty %} lang="{{ lang }}"{% endif %}>{{ post.title | escape }}</a>
+          {% endif %}
+        </h2>
+      </li> -->
+    {% endfor %}
+  </ul>
+
+</div>

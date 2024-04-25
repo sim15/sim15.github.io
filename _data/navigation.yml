@@ -1,6 +1,8 @@
 # If you want to link only specific pages in your header, add the path to the
 # pages in order as they should show up.
 main:
+  - title: "cool links"
+    url: "/links/"
   - title: "projects"
     url: "/projects/"
   - title: "blog"
