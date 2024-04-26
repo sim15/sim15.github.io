@@ -25,5 +25,19 @@
     "image": "bookmark-ten-signs-a-claimed-mathematical-breakthrough-is-wrong.jpg",
     "type": "article",
     "waybackUrl": "http://web.archive.org/web/20240404220158/https://scottaaronson.blog/?p=304"
+  },
+  {
+    "title": "Rust Language Cheat Sheet",
+    "site": "",
+    "author": "",
+    "date": "2024-04-26",
+    "timestamp": "2024-04-26T03:39:03.382Z",
+    "description": "",
+    "url": "https://cheats.rs/",
+    "type": "",
+    "tags": [
+      "rust"
+    ],
+    "waybackUrl": "http://web.archive.org/web/20240425090009/https://cheats.rs/"
   }
 ]
