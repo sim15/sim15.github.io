@@ -63,5 +63,20 @@
     "image": "bookmark-finding-the-right-people.png",
     "type": "article",
     "waybackUrl": "http://web.archive.org/web/20240417170905/https://www.startingfromnix.com/p/finding-the-right-people"
+  },
+  {
+    "title": "What is PL research and how is it useful? - The PL Enthusiast",
+    "site": "The Programming Languages Enthusiast",
+    "author": "Michael Hicks",
+    "date": "2024-04-28",
+    "timestamp": "2024-04-28T23:24:48.853Z",
+    "description": "This article looks at what PL research is, at least in part, and why it is effective.",
+    "url": "http://www.pl-enthusiast.net/2015/05/27/what-is-pl-research-and-how-is-it-useful/",
+    "image": "bookmark-what-is-pl-research-and-how-is-it-useful-the-pl-enthusiast.jpg",
+    "type": "article",
+    "tags": [
+      "pl"
+    ],
+    "waybackUrl": "http://web.archive.org/web/20240203203027/http://www.pl-enthusiast.net/2015/05/27/what-is-pl-research-and-how-is-it-useful/"
   }
 ]
