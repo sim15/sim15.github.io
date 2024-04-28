@@ -103,5 +103,21 @@
     "url": "https://sysprog21.github.io/lkmpg/",
     "type": "",
     "waybackUrl": "http://web.archive.org/web/20240211000134/https://sysprog21.github.io/lkmpg/"
+  },
+  {
+    "title": "Authenticated Data Structures (Generically) - The PL Enthusiast",
+    "site": "The Programming Languages Enthusiast",
+    "author": "Michael Hicks",
+    "date": "2024-04-28",
+    "timestamp": "2024-04-28T23:49:13.975Z",
+    "description": "This blog post is the first in my series on secure computation and will be presented in two parts. It briefly introduces some work my collaborators and I published this year, which illustrates a pleasant application of programming languages ideas to … Continue reading →",
+    "url": "http://www.pl-enthusiast.net/2014/06/11/authenticated-data-structures-generically/",
+    "image": "bookmark-authenticated-data-structures-generically-the-pl-enthusiast.png",
+    "type": "article",
+    "tags": [
+      "pl",
+      "cryptography"
+    ],
+    "waybackUrl": "http://web.archive.org/web/20240203203041/http://www.pl-enthusiast.net/2014/06/11/authenticated-data-structures-generically/"
   }
 ]
