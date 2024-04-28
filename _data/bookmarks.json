@@ -92,5 +92,16 @@
       "pl"
     ],
     "waybackUrl": "http://web.archive.org/web/20240415102746/https://www.craftinginterpreters.com/"
+  },
+  {
+    "title": "The Linux Kernel Module Programming Guide",
+    "site": "",
+    "author": "",
+    "date": "2024-04-28",
+    "timestamp": "2024-04-28T23:37:37.352Z",
+    "description": "",
+    "url": "https://sysprog21.github.io/lkmpg/",
+    "type": "",
+    "waybackUrl": "http://web.archive.org/web/20240211000134/https://sysprog21.github.io/lkmpg/"
   }
 ]
