@@ -78,5 +78,19 @@
       "pl"
     ],
     "waybackUrl": "http://web.archive.org/web/20240203203027/http://www.pl-enthusiast.net/2015/05/27/what-is-pl-research-and-how-is-it-useful/"
+  },
+  {
+    "title": "Crafting Interpreters",
+    "site": "",
+    "author": "",
+    "date": "2024-04-28",
+    "timestamp": "2024-04-28T23:30:14.178Z",
+    "description": "",
+    "url": "https://craftinginterpreters.com/",
+    "type": "",
+    "tags": [
+      "pl"
+    ],
+    "waybackUrl": "http://web.archive.org/web/20240415102746/https://www.craftinginterpreters.com/"
   }
 ]
