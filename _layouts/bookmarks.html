@@ -25,12 +25,12 @@ layout: default
         
 
         <span class="post-meta">
-            {% include date.html date=bookmark.date lang=lang %} •
+            {% include date.html date=bookmark.date lang=lang %}
             {% if bookmark.tags != empty %}
             {% include category_links_bookmark.html tags=bookmark.tags %}
             {% endif %}
             {% if bookmark.waybackUrl %}
-              <a href="{{ bookmark.waybackUrl }}" target="_target">(archive)</a>
+               •  <a href="{{ bookmark.waybackUrl }}" target="_target">(archive)</a>
             {% endif %}
           </span>
         
