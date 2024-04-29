@@ -17,6 +17,9 @@ on:
       tags:
         description: Add tags to categorize the book. Separate each tag with a comma. Optional.
         type: string
+      altTitle:
+        description: Title if not scraped properly. Optional.
+        type: string
 
 jobs:
   add-bookmark:
@@ -30,6 +33,7 @@ jobs:
         uses: sim15/bookmark-action@v1.0.1
         with:
           filename: _data/bookmarks.json
+          additional-properties: altTitle
       - name: Commit files
         run: |
           git pull
