@@ -29,7 +29,9 @@ layout: default
             {% if bookmark.tags != empty %}
             {% include category_links_bookmark.html tags=bookmark.tags %}
             {% endif %}
-              <a href="{{ bookmark.waybackUrl }}" target="_target">(archive)</a>
+          {% if bookmark.waybackUrl != empty %}
+        <a href="{{ bookmark.waybackUrl }}" target="_target">(archive)</a>
+        {% endif %}
           </span>
         
     </li>
