@@ -26,7 +26,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Bookmark action
-        uses: katydecorah/bookmark-action@v7.0.0
+        # uses: katydecorah/bookmark-action@v7.0.0
+        uses: sim15/bookmark-action@v7.0.0
         with:
           filename: _data/bookmarks.json
       - name: Commit files
