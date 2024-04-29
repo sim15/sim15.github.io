@@ -143,5 +143,18 @@
     "image": "",
     "type": "",
     "altTitle": "Playing in the ruins - by Sasha Chapin"
+  },
+  {
+    "title": "playhtml",
+    "site": "",
+    "author": "",
+    "date": "2024-04-29",
+    "timestamp": "2024-04-29T21:45:31.822Z",
+    "description": "interactive, collaborative html elements with a single attribute",
+    "url": "https://playhtml.fun/",
+    "image": "bookmark-playhtml.png",
+    "type": "",
+    "waybackUrl": "http://web.archive.org/web/20231209145843/https://playhtml.fun/",
+    "altTitle": "playhtml"
   }
 ]
