@@ -14,8 +14,11 @@ layout: default
     {% for bookmark in site.data.bookmarks reversed %}
     <li >
         <!-- <a href="{{bookmark.url}}" target="_target">{{bookmark.title}} (<span>{{bookmark.url}}</span>)</a> -->
-        
+        {% if bookmark.title != empty %}
         <h3 style="margin-bottom: 0;"><a href="{{bookmark.url}}" target="_target">{{bookmark.title}}</a></h3>
+        {% else %}
+        <h3 style="margin-bottom: 0;"><a href="{{bookmark.url}}" target="_target">{{bookmark.altTitle}}</a></h3>
+        {% endif %}
         {% if bookmark.notes != empty %}
         <p  style="margin-bottom: 0; color: rgb(78, 78, 78);"><i>{{bookmark.notes}}</i></p>
         {% endif %}
