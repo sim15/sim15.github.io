@@ -204,5 +204,16 @@
     "type": "",
     "waybackUrl": "http://web.archive.org/web/20240423204039/https://inferencelabs.com/",
     "altTitle": "[inference labs]"
+  },
+  {
+    "title": "Higher Order Company",
+    "site": "",
+    "author": "",
+    "date": "2024-05-19",
+    "timestamp": "2024-05-19T04:40:11.622Z",
+    "description": "We're the HOC, a tech startup revolutionizing computing with massively parallel runtimes and processors using our HVM runtime and Bend programming language.",
+    "url": "https://higherorderco.com",
+    "type": "",
+    "altTitle": "Higher Order Company"
   }
 ]
