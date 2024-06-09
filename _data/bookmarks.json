@@ -228,5 +228,18 @@
     "type": "article",
     "waybackUrl": "http://web.archive.org/web/20230925064033/https://www.ribbonfarm.com/2015/09/17/how-to-be-a-precious-snowflake/",
     "altTitle": "How to be a Precious Snowflake"
+  },
+  {
+    "title": "Linux Performance Analysis in 60,000 Milliseconds",
+    "site": "Medium",
+    "author": "Netflix Technology Blog",
+    "date": "2024-06-09",
+    "timestamp": "2024-06-09T08:20:21.211Z",
+    "description": "You log in to a Linux server with a performance issue: what do you check in the first minute?",
+    "url": "https://netflixtechblog.com/linux-performance-analysis-in-60-000-milliseconds-accc10403c55",
+    "image": "bookmark-linux-performance-analysis-in-60000-milliseconds.png",
+    "type": "article",
+    "waybackUrl": "http://web.archive.org/web/20240529190815/https://netflixtechblog.com/linux-performance-analysis-in-60-000-milliseconds-accc10403c55",
+    "altTitle": "Linux Performance Analysis in 60,000 Milliseconds | by Netflix Technology Blog | Netflix TechBlog"
   }
 ]
