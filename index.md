@@ -4,7 +4,7 @@ title:
 permalink: /
 ---
 
-Hey there! I'm Simon--a student interested in building secure, performant, and private systems.
+Hey there! I'm Simon---a student interested in building secure, performant, and private systems.
 Currently I'm studying computer science at [Carnegie Mellon University](https://www.cmu.edu/) with a concentration in computer systems, though
 I broadly enjoy exploring new problems at the intersections of theoretical computer science, mathematics and software.
 Much of my previous work has been oriented around theoretical and applied cryptography, systems, and cloud computing. 
