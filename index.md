@@ -4,7 +4,8 @@ title:
 permalink: /
 ---
 
-I'm an undergrad at [Carnegie Mellon University](https://www.cmu.edu/) studying computer science. I enjoy exploring new problems at the intersections of theoretical computer science, mathematics, and software, especially using new theoretical tools to build systems and improve the performance, privacy, and security of existing ones. 
+I'm an undergrad at [Carnegie Mellon University](https://www.cmu.edu/) studying computer science. 
+I enjoy exploring new problems at the intersections of theoretical computer science, mathematics, and software--especially using new theoretical tools to build systems and improve the performance, privacy, and security of existing ones. 
 At the moment, I'm particularly interested in theoretical and applied cryptography, systems, and cloud computing. 
 
 I'm currently working with Professor [Wenting Zheng](https://wzheng.github.io/) and the Cryptosystems Group @ The [Systems, Networking, and Performance (SNAP)](https://snap.cs.cmu.edu/) lab here at CMU, and in my spare time am working on the [Tensordock](https://tensordock.com/) marketplace. 
