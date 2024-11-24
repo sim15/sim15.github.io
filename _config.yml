@@ -76,6 +76,16 @@ kramdown:
   footnote_nr: 1
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   toc_levels: 1..6
+  # math_engine: katex
+
+# highlighter: rouge
+# markdown: kramdown
+# kramdown:
+
+#   input: GFM
+#   auto_ids: true
+#   hard_wrap: false
+#   syntax_highlighter: rouge
 
 # jekyll-archives
 jekyll-archives:

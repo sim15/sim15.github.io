@@ -1,0 +1,276 @@
+---
+layout: post
+title: "Pseudorandomness of Legendre Sequences"
+date: 2024-08-14
+categories: cryptography math
+---
+
+I wanted to take some notes on [this](https://eprint.iacr.org/2024/1252.pdf) recent paper from [Henry Corrigan-Gibbs](https://people.csail.mit.edu/henrycg/) and [David Wu](https://www.cs.utexas.edu/~dwu4/) titled "Legendre Sequences are Pseudorandom under the Quadratic-Residuosity Assumption."
+
+Given that this paper is theoretical and its motivation is not tied to a specific deployment scenario, these notes will be kept fairly high level---I won't go fully into every proof. Furthermore, these are not designed to be exhaustive and/or perfect. They are largely for my own notetaking. My intention is to give a high-level understanding/intuition on some of their proof techniques and to provide some insight into the problem---not to redescribe the entire work. I encourage everyone to fully read Henry and David's original paper to get a complete understanding.
+
+---
+
+**TLDR;** In this paper, we focus on a specific cryptographic hardness assumption, the Quadratic Residuosity Problem, and explore how it can be used to prove the *pseudorandomness* of a particular mathematical object known as Legendre Sequences.
+Since (pseudo)randomness is critically important in computer science, cryptographers are always looking for new methods to efficiently and provably generate random bits.
+Of course, since no *true* sources of efficient randomness exist, we rely on certain hardness assumptions based on computationally difficult problems in order to reason about the security (and in our case, the pseudorandomness) of cryptographic constructions.
+
+<!-- Hardness assumptions are the basis of cryptography, and make formal reasoning of security fit into a consistent framework.  -->
+
+<!-- {% include math_snippets/blockquote.html content="This is a blockquote " %} -->
+
+<!-- Given an integer $N = pq$, for distinct primes $p$ and $q$, the quadratic-residuosity problem asks an algorithm to determine whether an integer $x \in \Z_N$ with Jacobi symbol $1$ modulo $N$ is a quadratic residue modulo $N$—i.e., whether there exists $y \in \Z_N$ such that $y^2 = x \mod N$. -->
+
+---
+
+We start by defining the base problem for the hardness assumption we use throughout, whose roots go back to Gauss in 1801. 
+That is, to determine whether a given value $s$ is a quadratic residue modulo a large prime $N$ composed of the product of two (large) unknown primes. 
+
+{% include math_snippets/theorem-box.html
+title="Quadratic Residuosity Problem (QRP)"
+content="
+Let $\J_N := \qty{x \in \Z_N : \jacobi{x}{N}=1}$ be the set of integers in $\Z_N$ with Jacobi symbol $1$ modulo $N$. And $\Q\R_N$ be the set of quadratic residues modulo $N$. For an integer $N=pq$ under distinct primes $p$ and $q$, the QRP asks for a decider for the language
+
+$$\QR = \qty{s \in \J_N : \exists y \in \Z_n,  y^2 = s\bmod N}$$
+
+i.e., to determine whether a random $s \in \J_N$ is a quadratic residue modulo $N$.
+"
+%}
+
+From this definition of the computational problem we introduce the following hardness assumption:
+
+
+<!-- QRA -->
+
+{% include math_snippets/theorem-box.html
+title="Quadratic Residuosity Assumption (QRA)"
+content="
+The QRP is computationally intractable.
+"
+%}
+
+For our purposes, we limit $p,q$ such that $p\equiv q\equiv 3 \bmod 4$, making $N=pq$ a Blum Prime (or Blum integer), though this restriction does not actually change the difficulty of the Quadratic Residuosity problem. We denote the set of Blum integers with $\blumprimes$. 
+
+We now discuss a well-known decisional variant of the QRP, which is occasionally useful for simplifying reductions and allowing concrete arguments about the indistinguishability of distributions (rather than the "hardness'' of a computational problem). 
+
+<!-- Decisional-QRP -->
+
+{% include math_snippets/theorem-box.html
+title="Decisional-QRP"
+content="
+For a Blum integer $N=pq$ and a random $s\in \J_N$, the Decisional-QRP asks to distinguish the Legendre symbol $\jacobi{s}{p}$ from a random value in $\qty{-1,1}$.
+"
+%}
+
+As we might intuitively expect, this problem is not any easier than solving the QRP. 
+
+<!-- QRP <= Decisional-QRP > -->
+
+{% include math_snippets/theorem-box.html
+title="QRP $\le$ Decisional-QRP"
+content="
+If the QRP is hard, then so is the Decisional-QRP.
+"
+%}
+
+From here, it will be useful to massage these definitions into a more probabilistic formulation, which will
+allow us to argue (statistical) indistinguishability. 
+We define an algorithm's (adversary's) advantage when solving these problems.
+<!-- QRP Advantage  -->
+
+{% include math_snippets/theorem-box.html
+title="
+QRP advantage"
+color=2
+content="
+For an algorithm $\adv$, security parameter $\lambda$, and bit $b \in \qty{0,1}$, we define $$\rho_{\adv,b}(\lambda)$$ to be
+
+$$
+\rho_{\adv,b}(\lambda) :=
+\qty[
+  \adv(N, x_b)=1 : 
+\,\,
+\begin{aligned}
+  p,q \rgets \blumprimes_\lambda, N\gets pq\\
+  x_0 \rgets \Q\R_N,
+  x_1 \rgets \J_N \setminus \Q\R_N
+\end{aligned}
+]
+.
+$$
+
+We define the *decisional-quadratic-residuosity advantage* of an algorithm $\adv$ as:
+
+$$
+\mathsf{QRDAdv}[\adv](\lambda) := |\rho_{\adv,0}(\lambda) − \rho_{\adv,1}(\lambda)|.
+$$
+"
+%}
+
+At a high level, the above formulation encapsulates the rate at which an algorithm correctly solves the QRP from a uniformly randomly sampled "challenge" (e.g., an advantage of 1 will indicate that the problem is solved 100% of the time; an advantage of 0 indicates the algorithm's output is no better than a coin flip). 
+
+<!-- Decisional-QRP Advantage -->
+
+{% include math_snippets/theorem-box.html
+title="
+Decisional-QRP advantage"
+color=2
+content="
+For an algorithm $\adv$, security parameter $\lambda$, and bit $b \in \qty{0,1}$, we define $$\rho_{\adv,b}(\lambda)$$ to be
+
+$$
+\rho_{\adv,b}(\lambda) :=
+\qty[
+  \adv(N, x_b, y_b)=1 : 
+\,\,
+\begin{aligned}
+  p,q \rgets \blumprimes_\lambda, N\gets pq\\
+  x \rgets \J_N, \\
+  y_0 \gets \jacobi{x}{p},
+  y_1 \rgets \qty{-1,1}
+\end{aligned}
+]
+.
+$$
+
+We define the *quadratic-residuosity advantage* of an algorithm $\adv$ as:
+
+$$
+\mathsf{QRAdv}[\adv](\lambda) := |\rho_{\adv,0}(\lambda) − \rho_{\adv,1}(\lambda)|.
+$$
+"
+%}
+
+Armed with these definitions, we now define a *new* computational problem by extending the ideas introduced in the QRP and decisional QRP. This will be used to make a chain of reductions that ultimately proves the pseudorandomness of Legendre Sequences. 
+
+{% include math_snippets/theorem-box.html
+title="
+$\ell$-time full-domain Legendre problem ($\ell$-FLP)"
+content="
+Given a Blum integer $N = pq$, a list of iid random values $x_1,\ldots, x_\ell \rgets \Z^*_N$,
+and bits $$(\beta_1,\ldots, \beta_\ell) \in {\lbrace-1,1\rbrace}_\ell$$,
+this problem asks an algorithm to distinguish the case in which the $\beta$ values are the Legendre symbols $$\jacobi{x_1}{p},\ldots, \jacobi{x_\ell}{p}$$ modulo one prime factor $p$ of $N$, or whether the $\beta$ values are independent random values in $$\lbrace -1, 1\rbrace$$.
+"
+%}
+
+The key difference between the standard quadratic-residuosity problems is that the challenge values $(x_1, . . . , x_\ell)$ in the above are sampled from all of $\Z^*_N$, not just the set of elements with Jacobi symbol 1.
+We define the following adversarial advantage, just as before. 
+
+<!-- $\ell$-FLP Advantage -->
+
+{% include math_snippets/theorem-box.html
+title="
+$\ell$-FLP advantage"
+color=2
+content="
+
+"
+%}
+
+
+Combining the above theorems that
+
+- we use a standard argument to show that a decisional variant of quadratic resid-
+  uosity (Definition 3.1) is as hard as standard quadratic residuosity (Lemma 3.5).
+  Via a randomization procedure that exploits the structure of Z∗
+  N ,
+- we then show that hardness of the decisional quadratic-residuosity variant implies that the
+  ℓ-time full-domain-Legendre problem is hard (Lemma 3.2).
+
+{% include math_snippets/theorem-box.html
+title="
+Decisional-QRP $\le$ $\ell$-time full-domain Legendre problem
+"
+content="
+We show that for every $\ell = polylog(N)$, the ℓ-time full-domain Legendre problem is as hard as the Decisional-QRP.
+"
+
+proof_flag="(sketch)"
+proof="Take any polynomial $\ell$ and any efficient adversary $\adv$ for the $\ell$-FLP.
+We proceed by defining the following hybrid distributions:
+
+$$ H_i(\adv) \sim \qty{\adv(N, ((x_1,\beta_1), \cdots ,(x_\ell, \beta_\ell))) : 
+\,\,
+\begin{aligned}
+  p,q \rgets \blumprimes_\lambda, N\gets pq\\
+  x_1,\ldots, x_\ell \rgets \Z_N^*\\
+  \beta_j \rgets \qty{-1,1}, \forall j \le i \\
+  \beta_j \gets \jacobi{x_j}{p}, \forall j > i \\
+\end{aligned}}.
+$$
+
+Notice that 
+
+$$
+\mathsf{LegAdv}_\ell[\adv] = |\prob{H_0(\adv)=1} - \prob{H_\ell(\adv)=1}|
+$$
+
+We now construct an adversary $\mathcal{B}$ for the Decisional-QRP whose $\mathsf{QRDAdv}$ advantage is equal to $$\frac{1}{\ell}\mathsf{LegAdv}_\ell[\adv]$$:
+<br/><br/>
+
+
+Define $\mathcal{B}$ to,
+1. take a Decisional-QRP challenge $(N, x, y)$ as input,
+2. sample an index $i^*\rgets [\ell]$,
+3. For each $j\in \ell$, computes $$(x_j,\beta_j)$$ in the following way:
+   - Case 1: if $$j < i^*$$, sample $$(x_j,\beta_j)\rgets \Z_N^*\times \qty{-1,1}$$
+   - $\star$ Case 2: if $$j > i^*$$, sample a random $$x_j \rgets \Z_N^*$$ and return $$(x_j, \jacobi{x_j}{p})$$ (see paper for details)
+   - $\star$ Case 3: if $$j = i^*$$, perform a special sampling procedure (see paper for details) that is distributed identically to Case 1 if $y \gets \jacobi{x}{p}$ and is identical to Case 2 if $y \rgets \qty{-1,1}$.  
+4. Outputs the result of $$\adv(N, ((x_1,\beta_1), \cdots ,(x_\ell, \beta_\ell)))$$.
+
+
+With this setup, we can fairly concisely show that, conditioned on an $i^*=i$: 
+- if $y \gets \jacobi{x}{p}$ we have the distribution of $$((x_1,\beta_1), \cdots ,(x_\ell, \beta_\ell))$$ 
+is identical in $\mathcal{B}$ and in $H_{i-1}$. Hence, Algorithm $\mathcal{B}$ outputs 1 with probability $\prob{H_{i-1}(\adv)=1}$.
+- if $y \rgets \qty{-1,1}$ we have the distribution of $$((x_1,\beta_1), \cdots ,(x_\ell, \beta_\ell))$$ 
+is identical in $\mathcal{B}$ and in $H_{i}$. Hence, Algorithm $\mathcal{B}$ outputs 1 with probability $\prob{H_{i}(\adv)=1}$
+
+
+So (as we defined the Decisional-QRP Advantage), we have
+
+$$
+\mathsf{QRDAdv}[\mathcal{B}] = | \frac{1}{\ell} \sum_{i\in [\ell]} H_{i-1} - \frac{1}{\ell} \sum_{i\in [\ell]} H_{i}|
+$$
+
+which telescopes to 
+
+$$
+\mathsf{QRDAdv}[\mathcal{B}] = \frac{1}{\ell}| H_{0} - H_{\ell}| = \frac{1}{\ell} \mathsf{LegAdv}[\adv].
+$$
+
+So an efficient adversary solving $\ell$-FLP can also efficiently solve Decisional-QRP.
+"
+%}
+
+{% include math_snippets/theorem-box.html
+title="
+distinguishing sequences of Legendre symbols modulo a hidden prime $p$ is as hard as the $\ell$-time full-domain-Legendre problem
+"
+content="
+distinguishing sequences of Legendre symbols modulo a hidden prime $p$ is as hard as the $\ell$-time full-domain-Legendre problem
+"
+%}
+
+{% include math_snippets/theorem-box.html
+title="
+Theorem
+"
+content="
+$$L((p, x), a) := \jacobi{x+a}{p}$$ is a weak pseudorandom function (PRF) under the $$\ell$$-time full-domain Legendre problem. In this PRF construction, the pair $(p, x)$ is the PRF key and $a$ is the input.
+"
+%}
+
+<!-- Taken together, this shows that distinguishing the Legendre weak PRF is at least as hard as solving the $\ell-time$ full-domain-Legendre problem, which in turn is as hard as quadratic residuosity. We conclude then that under the quadratic-residuosity assumption, the Legendre weak PRF is secure. Correspondingly, this implies se- curity of Damg˚ard’s PRG with a hidden prime and uniformly random offsets. -->
+<!-- 
+- We actually require $p \equiv q \equiv 3 \mod 4$, which makes $N = pq$ a "Blum integer."
+  - This does not make quadratic residuosity any harder
+- First show new variant of the quadratic-residuosity problem, they call the $\ell$-time full-domain Legendre problem (Definition 3.3), is just as hard (for $\ell$ in Polylog($N$)).
+- show that distinguishing sequences of Legendre symbols modulo a hidden prime $p$ is as hard as the $\ell$-time full-domain-Legendre problem
+  - In particular, main task is to show that for a secret prime $p$ and secret offset $x$, for large-enough random integers $a_1, \ldots, a_\ell$, distinguishing the string $\jacobi{x+a_1}{p}, . . . , \jacobi{x+a_\ell}{p}$ from a random string in $\lbrace−1, 1\rbrace_\ell$ is as hard as the $\ell$-time full-domain Legendre problem.
+- $L((p, x), a) := \jacobi{x+a}{p}$ is a weak pseudorandom function (PRF) under the $\ell$-time full-domain Legendre problem. In this PRF construction, the pair $(p, x)$ is the PRF key and $a$ is the input.
+
+**NOTATION**
+
+- $\Z_N^*$ multiplicative group of integers mod $N$
+- $$\J_N\subset \Z_N^*$$ set of elements with Jacobi symbol $1$ (i.e., set of all $x\in \Z_N^*$ s.t. $\jacobi{x}{N}=1$)
+- $$\Q\R_N \subset \J_N$$ is the set of quadratic residues modulo $N$. -->

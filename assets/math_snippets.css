@@ -1,0 +1,52 @@
+.theorem-box {
+  background-color: #f9f9f9;
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.03);
+
+}
+
+.theorem-title {
+  font-weight: bold;
+  font-style: normal;
+  /* text-decoration: underline; */
+  margin-bottom: .5em;
+  display: inline;
+}
+
+.theorem-content {
+    /* display: inline; */
+    font-style: italic;
+}
+
+.theorem-content > p {
+    /* display: inline; */
+    margin: 0;
+}
+
+.theorem-title > p {
+    margin: 0;
+}
+
+.proof-header {
+  font-weight: bold;
+}
+
+.proof-content > p {
+    display: inline;
+    margin: 0;
+}
+
+
+  /* BLOCKQUOTE */
+.custom-blockquote {
+    padding: 1em 0 1em .5em;
+    border-left: 5px solid #3498db;
+    margin-left: .1em;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.custom-blockquote > p {
+    margin: 0
+}

@@ -5,8 +5,7 @@ permalink: /projects/
 ---
 
 #### publications:
-- S. Servan-Schreiber, S. Beyzerov, E. Yablon, and H. Park, “Private Access Control for Function Secret
-Sharing”, in _2023 IEEE Symposium on Security and Privacy (S&P)_, IEEE, 2023.
+- S. Servan-Schreiber, S. Beyzerov, E. Yablon, and H. Park, “Private Access Control for Function Secret Sharing”, in _2023 IEEE Symposium on Security and Privacy (S&P)_, IEEE, 2023.
 
 
 

@@ -1,0 +1,22 @@
+{% assign colors = "#2839a5,#a52839,#39a528,#a5a528,#a539a5" | split: "," %} {%
+assign color_index = include.color_index | default: 0 %} {% assign border_color
+= colors[color_index] %}
+
+<div class="theorem-box" style="border: 2px solid {{ border_color }};">
+  <div class="theorem-content">
+    <div class="theorem-title">
+      {{ include.title | append: "." | markdownify }}
+    </div>
+    {{ include.content | markdownify }} {% if include.proof %}
+    <div class="proof-content" style="position: relative">
+      <br />
+      <!-- {{ "---" | markdownify }} -->
+      <span class="proof-header" style="display: inline">
+        Proof{% if include.proof_flag %} {{ include.proof_flag }}{% endif %}.
+      </span>
+      {{ include.proof | markdownify }}
+      <span style="position: absolute; bottom: 0; right: 0">$\square$</span>
+    </div>
+    {% endif %}
+  </div>
+</div>
