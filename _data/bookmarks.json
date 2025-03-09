@@ -311,5 +311,16 @@
     "url": "http://linyun.info/advice.html",
     "type": "",
     "altTitle": "Lin Yun's Blog"
+  },
+  {
+    "title": "Dmitri Shuralyov - Idiomatic Go",
+    "site": "",
+    "author": "",
+    "date": "2025-03-09",
+    "timestamp": "2025-03-09T23:48:36.105Z",
+    "description": "",
+    "url": "https://dmitri.shuralyov.com/idiomatic-go",
+    "type": "",
+    "altTitle": "Dmitri Shuralyov - Idiomatic Go"
   }
 ]
