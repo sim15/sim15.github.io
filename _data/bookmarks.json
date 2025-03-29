@@ -344,5 +344,16 @@
     "url": "https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/coroutines-philosophy/",
     "type": "",
     "altTitle": "Philosophy of coroutines"
+  },
+  {
+    "title": "Metaprogramming custom control structures in C",
+    "site": "",
+    "author": "",
+    "date": "2025-03-29",
+    "timestamp": "2025-03-29T19:21:04.728Z",
+    "description": "",
+    "url": "https://www.chiark.greenend.org.uk/~sgtatham/mp/",
+    "type": "",
+    "altTitle": "Metaprogramming custom control structures in C"
   }
 ]
