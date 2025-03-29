@@ -333,5 +333,16 @@
     "url": "https://www.ritchievink.com/blog/2021/02/28/i-wrote-one-of-the-fastest-dataframe-libraries/",
     "type": "",
     "waybackUrl": "https://web.archive.org/web/20240813170324/https://www.ritchievink.com/blog/2021/02/28/i-wrote-one-of-the-fastest-dataframe-libraries/"
+  },
+  {
+    "title": "Philosophy of coroutines",
+    "site": "",
+    "author": "",
+    "date": "2025-03-29",
+    "timestamp": "2025-03-29T18:43:11.068Z",
+    "description": "",
+    "url": "https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/coroutines-philosophy/",
+    "type": "",
+    "altTitle": "Philosophy of coroutines"
   }
 ]
