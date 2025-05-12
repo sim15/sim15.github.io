@@ -4,15 +4,13 @@ title:
 permalink: /
 ---
 
-Hey there! I'm Simon---a student interested in building secure, performant, and private systems.
-Currently I'm studying computer science at [Carnegie Mellon University](https://www.cmu.edu/) with a concentration in computer systems, though
-I broadly enjoy exploring new problems at the intersections of theoretical computer science, mathematics and software.
-Much of my previous work has been oriented around theoretical and applied cryptography, systems, and cloud computing. 
+Hey there! I'm Simon---a computer science student at [Carnegie Mellon University](https://www.cmu.edu/), concentrating in computer systems. 
+I'm particularly interested in building performant, scalable, and secure systems, and broadly enjoy exploring new problems with unique theoretical and practical challenges. Much of my previous work has been oriented around theoretical and applied cryptography and cloud computing. 
 
-I'm currently working with Professor [Wenting Zheng](https://wzheng.github.io/) and The [Systems, Networking, and Performance (SNAP)](https://snap.cs.cmu.edu/) lab here at CMU, and previously worked on [Tensordock](https://tensordock.com/)
-and also spent some time with the [Computational Structures Group](https://www.csail.mit.edu/research/computation-structures-group) @ [MIT CSAIL](https://www.csail.mit.edu/) studying privacy-preserving database access under the mentorship of [Sacha Servan-Schreiber](http://sachaservanschreiber.com/). 
+I'm currently working with Professor [Wenting Zheng](https://wzheng.github.io/) and The [Systems, Networking, and Performance (SNAP)](https://snap.cs.cmu.edu/) lab here at CMU. Before that, I helped build and scale [Tensordock](https://tensordock.com/), now acquired by [Voltage Park](https://www.voltagepark.com/).
+I also spent some time with the [Computational Structures Group](https://www.csail.mit.edu/research/computation-structures-group) @ [MIT CSAIL](https://www.csail.mit.edu/) studying privacy-preserving database access under the mentorship of [Sacha Servan-Schreiber](http://sachaservanschreiber.com/). 
 
-I'd love to chat about any of these (or any other disparate) projects, and anything in between, so feel free to reach out :)
+If you'd like to chat about new and existing projects or opportunities, feel free to reach out below :)
 
 [email](mailto:sbeyzero@andrew.cmu.edu) // [twitter](https://twitter.com/simonbeyzerov) // [google scholar](https://scholar.google.com/citations?user=w08suY8AAAAJ) // [github](https://github.com/sim15)
 
