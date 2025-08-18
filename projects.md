@@ -6,7 +6,7 @@ permalink: /projects/
 
 #### publications:
 - S. Servan-Schreiber, S. Beyzerov, E. Yablon, and H. Park, “Private Access Control for Function Secret Sharing”, in _2023 IEEE Symposium on Security and Privacy (S&P)_, IEEE, 2023.
-
+- Z. Su, Q. Pang, S. Beyzerov, and W. Zheng, “FABLE: Batched Evaluation on Confidential Lookup Tables in 2PC,” in _2025 USENIX Security Symposium_, Seattle, WA, USA, August 2025.
 
 
 
