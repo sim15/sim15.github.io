@@ -5,14 +5,12 @@ permalink: /
 ---
 
 
-Hey there! I'm Simon---a student at [Carnegie Mellon University](https://www.cmu.edu/) studying computer science. I'm particularly excited by interesting theoretical and practical questions across (distributed, operating, ML, secure) systems. My research and prior work has largely focused on using these theoretical questions to build protocols and platforms with new practical guarantees across academia, tech startups, and quantitative finance.
+Hi there! I'm Simon, a student at [Carnegie Mellon University](https://www.cmu.edu/) studying computer science. I'm particularly excited by new theoretical and practical challenges across (_distributed, operating, ML, secure_) systems, with my research and prior work largely focusing on building tools with interesting new practical guarantees to help tackle them :)
 
-At CMU, I've worked with Professor [Wenting Zheng](https://wzheng.github.io/) and The [Systems, Networking, and Performance (SNAP)](https://snap.cs.cmu.edu/) lab on secure multi-party LUT evaluation for privacy-preserving ML inference and data analytics. 
-Prior to that, I worked with the [Computational Structures Group](https://www.csail.mit.edu/research/computation-structures-group) @ [MIT CSAIL](https://www.csail.mit.edu/) studying privacy-preserving database access under the mentorship of [Sacha Servan-Schreiber](http://sachaservanschreiber.com/). 
+At CMU, I've worked with Professor [Wenting Zheng](https://wzheng.github.io/) and the [Systems, Networking, and Performance (SNAP)](https://snap.cs.cmu.edu/) lab on secure multi-party LUT evaluation for privacy-preserving ML inference and data analytics. 
+Prior to that, I worked with the [Computational Structures Group](https://www.csail.mit.edu/research/computation-structures-group) @ [MIT CSAIL](https://www.csail.mit.edu/) studying privacy-preserving database access & retrieval under the mentorship of [Sacha Servan-Schreiber](http://sachaservanschreiber.com/). 
 
-I've also helped build the GPU marketplace at [Tensordock](https://tensordock.com/), now acquired by [Voltage Park](https://www.voltagepark.com/). This past summer, I worked on a quantitative research team at [Point72](https://point72.com/) on their signal research and trading platform.
-
-If you'd like to chat, feel free to reach out below :)
+Outside of research, I've helped build the GPU compute marketplace at [Tensordock](https://tensordock.com/), now acquired by [Voltage Park](https://www.voltagepark.com/). This past summer, I interned on a quantitative research team at [Point72](https://point72.com/), improving their signal research and trading platform. 
 
 [email](mailto:sbeyzero@andrew.cmu.edu) // [twitter](https://twitter.com/simonbeyzerov) // [google scholar](https://scholar.google.com/citations?user=w08suY8AAAAJ) // [github](https://github.com/sim15)
 
