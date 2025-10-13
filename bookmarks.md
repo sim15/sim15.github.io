@@ -1,6 +1,6 @@
 ---
 layout: bookmarks
 title: "cool reads"
-permalink: /links/
+permalink: /reads/
 ---
 a collection of readings I wanted to keep saved somewhere...
