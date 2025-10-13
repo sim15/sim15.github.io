@@ -2,7 +2,6 @@
  • 
   {% for tag in include.tags %}
     {% assign no_comma = forloop.last %}
-      <!-- <a href="{{ tag | relative_url }}">{{ tag | escape }}</a>{% unless no_comma %},{% endunless %} -->
       {{ tag | escape }}{% unless no_comma %},{% endunless %}
   {% endfor %}
   
