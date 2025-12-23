@@ -355,5 +355,17 @@
     "url": "https://www.chiark.greenend.org.uk/~sgtatham/mp/",
     "type": "",
     "altTitle": "Metaprogramming custom control structures in C"
+  },
+  {
+    "title": "It's always TCP_NODELAY. Every damn time. - Marc's Blog",
+    "site": "",
+    "author": "Marc Brooker",
+    "date": "2025-12-23",
+    "timestamp": "2025-12-23T03:27:05.594Z",
+    "description": "",
+    "url": "https://brooker.co.za/blog/2024/05/09/nagle.html",
+    "type": "",
+    "waybackUrl": "http://web.archive.org/web/20251223000058/https://brooker.co.za/blog/2024/05/09/nagle.html",
+    "altTitle": "It's always TCP_NODELAY. Every damn time. - Marc's Blog"
   }
 ]
