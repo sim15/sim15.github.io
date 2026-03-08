@@ -5,7 +5,7 @@ permalink: /
 ---
 
 
-Hi there! I'm Simon. I'm a student at [Carnegie Mellon University](https://www.cmu.edu/) studying computer science and am particularly interested in new theoretical and practical questions across (_distributed, operating, ML, secure_) systems.
+Hi there! I'm Simon, a student at [Carnegie Mellon University](https://www.cmu.edu/) studying computer science, particularly interested in new theoretical and practical questions across (_distributed, operating, ML, secure_) systems.
 
 At CMU, I've worked with Professor [Wenting Zheng](https://wzheng.github.io/) and the [Systems, Networking, and Performance (SNAP)](https://snap.cs.cmu.edu/) lab on secure multi-party LUT evaluation for privacy-preserving ML inference and data analytics. 
 Prior to that, I worked with the [Computational Structures Group](https://www.csail.mit.edu/research/computation-structures-group) @ [MIT CSAIL](https://www.csail.mit.edu/) studying privacy-preserving database access & retrieval under the mentorship of [Sacha Servan-Schreiber](http://sachaservanschreiber.com/). 
