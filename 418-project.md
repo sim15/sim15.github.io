@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: noheader
 title: "15-418 final project"
 permalink: /s2026-418-project/
 ---
