@@ -135,7 +135,7 @@ We're using OCaml 5 on shared-memory multicore CPUs for the following reasons:
 
 ----
 
-***<center>Tentitative Schedule</center>***
+***<center>Tentative Schedule</center>***
 
 * Week of 3/30 - 4/5
   - Understand the source code of OCaml's standard library `Set` and potentially the algorithms from the literature we mentioned above. Understand both approaches and identify where they are different.
