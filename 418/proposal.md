@@ -4,16 +4,11 @@ title: "15-418 project proposal"
 permalink: /418-project/proposal/
 ---
 
-<center><u>Project Proposal: Parallel Ordered Sets and Maps in OCaml via Join-Based Algorithms</u></center>
+<center><u>Project Proposal: Parallel Bulk Operations for Ordered Sets and Maps in OCaml</u></center>
 
 
 <div style="text-align: justify;" markdown="1">
 ***<center><u>Summary</u></center>***
-
-<!-- 
-We'll implement parallel versions of ordered set and map data structures in OCaml 5, based on the join-based algorithmic framework developed by Blelloch, Ferizovic, and Sun. OCaml's standard library provides ordered sets and maps backed by AVL trees, but all operations are sequential. We'll parallelize the bulk operations — `union`, `intersection`, `difference`, and `filter` — using OCaml 5's multicore support (domains), then measure speedup, diagnose bottlenecks, and compare against the existing C++ PAM library to understand how language runtime characteristics (garbage collection, allocation model, task creation overhead) affect parallel performance on shared-memory multicore hardware.
-
-We'll investigate how to effectively parallelize bulk operations on balanced binary search trees (BSTs) (specifically `union`, `intersection`, `difference`, and `filter`) in a purely functional setting. Functional languages represent ordered sets and maps using persistent (immutable) balanced trees, and their bulk operations are entirely sequential despite having significant inherent parallelism. We'll implement and evaluate parallel strategies for these operations using OCaml 5's multicore support as our platform, measure how well they scale, and analyze what runtime and architectural factors limit parallel performance compared to analogous C++ implementations. -->
 
 
 Ordered sets and maps are among the most widely used data structures, and in functional languages are implemented as purely functional balanced binary search trees. 
@@ -25,14 +20,7 @@ We'll measure speedup and scaling behavior, figure out what specific runtime and
 ----
 
 ***<u><center>Background</center></u>***
- 
-<!-- An **ordered set** is a collection of keys from a totally ordered type (e.g., integers), stored in a balanced binary search tree (BST) so that an in-order traversal produces the keys in sorted order. An **ordered map** pairs each such key with a chosen value. 
-OCaml's standard library `Set` and `Map` modules, Haskell's `Data.Set` and `Data.Map`, and Scala's `TreeSet`/`TreeMap` are all implemented this way.
-In a **purely functional** (persistent) implementation, operations never mutate the existing tree. Instead, they return a new tree that shares most of its structure with the old one. This is important: it means there are no data races by construction, and old versions of the tree remain valid. 
-OCaml's standard library uses AVL trees (a self-balancing BST where the heights of any node's two subtrees differ by at most 1) with this persistent approach.
-The standard operations on these structures include `insert`, `delete`, `lookup`, `split`, `union`, `intersection`, `difference`, and `filter`. The "bulk" operations (`union`, `intersection`, `difference`, `filter`) are interesting parallelization targets because they must process potentially every element in both input trees and contain recursive subproblems that may be independent.
 
- -->
 
 
 ***Ordered Sets and Maps.*** An ordered set is a collection of totally ordered typed keys (e.g., integers) and supports membership queries, insertion, deletion, and iteration in sorted order. 
@@ -167,144 +155,4 @@ We're using OCaml 5 on shared-memory multicore CPUs for the following reasons:
   - Write final report and prepare poster. 
   - (Final report 4/30, poster session 5/1).
 
-
-<!-- 
-# Proposal: Parallel Ordered Sets and Maps in OCaml via Join-Based Algorithms
-
-## Summary
-
-We'll implement parallel versions of ordered set and map data structures in OCaml 5, based on the join-based algorithmic framework developed by Blelloch, Ferizovic, and Sun. OCaml's standard library provides ordered sets and maps backed by AVL trees, but all operations are sequential. We'll parallelize the bulk operations — `union`, `intersection`, `difference`, and `filter` — using OCaml 5's multicore support (domains), then measure speedup, diagnose bottlenecks, and compare against the existing C++ PAM library to understand how language runtime characteristics (garbage collection, allocation model, task creation overhead) affect parallel performance on shared-memory multicore hardware.
-
-## Background
-
-### The Data Structures
-
-An **ordered set** is a collection of keys from a totally ordered type (e.g., integers), stored in a balanced binary search tree (BST) so that an in-order traversal produces the keys in sorted order. An **ordered map** is the same idea but each key is paired with a value. These are fundamental data structures — OCaml's standard library `Set` and `Map` modules are exactly this, implemented using AVL trees (a self-balancing BST where the heights of any node's two subtrees differ by at most 1).
-
-The standard operations on these structures are `insert`, `delete`, `lookup`, `split`, `union`, `intersection`, `difference`, and `filter`. Of these, the "bulk" operations — `union`, `intersection`, `difference`, `filter` — are the ones with enough internal work to benefit from parallelism, since they must process potentially every element in both input trees.
-
-### The Join-Based Framework
-
-The key insight from the literature (Blelloch et al., "Joinable Parallel Balanced Binary Trees," SPAA 2016 / ACM TOPC 2022) is that all of these bulk operations can be built on top of two primitives:
-
-- **`join(L, k, R)`**: Takes a left tree `L`, a key `k`, and a right tree `R` where all keys in `L` < `k` < all keys in `R`, and produces a single valid balanced BST. This is the only function that needs to know about the balancing scheme (AVL rotations, etc.). It runs in O(|height difference|) time.
-
-- **`split(T, k)`**: Takes a tree `T` and a key `k`, and returns `(L, present, R)` where `L` contains all keys less than `k`, `R` contains all keys greater than `k`, and `present` indicates whether `k` was in `T`. This is built from `join`.
-
-Once you have `join` and `split`, `union` works as follows:
-
-```
-union(T1, T2) =
-  if T1 is empty, return T2
-  if T2 is empty, return T1
-  let (k, _) = root of T1
-  let (L2, _, R2) = split(T2, k)
-  let L' = union(left(T1), L2)    -- independent of the next line
-  let R' = union(right(T1), R2)   -- independent of the previous line
-  return join(L', k, R')
-```
-
-The critical observation: the two recursive calls to `union` operate on completely disjoint data. `L'` is built from elements less than `k` in both trees, `R'` from elements greater than `k`. They share nothing. This means they can be computed **in parallel** by forking two independent tasks.
-
-`intersection` and `difference` follow the same recursive pattern — split one tree by the root of the other, recurse independently on the two halves, combine results with `join`. `filter` similarly recurses on the two subtrees independently and combines.
-
-### Why This Is a Good Parallelization Target
-
-The parallelism here is **recursive, divide-and-conquer**: each level of recursion doubles the number of independent subproblems. For two trees of size `n`, the algorithm has O(n log n) work (total operations) and O(log² n) span (longest sequential dependency chain). This means there is a large amount of available parallelism for large inputs — the ratio of work to span grows polynomially with input size.
-
-However, the parallelism is **irregular**: the two halves produced by a split may be very different sizes depending on where the pivot falls, so load balancing is not trivial. Additionally, every `join` allocates a new tree node (the data structure is purely functional / persistent), so the algorithm is allocation-heavy.
-
-## The Challenge
-
-There are several aspects that make this problem challenging and interesting from a parallel systems perspective:
-
-**Granularity control.** Forking a parallel task has overhead — creating a domain or task, scheduling it, synchronizing on its result. For small subtrees, this overhead exceeds the benefit of parallelism. We need to find the right threshold: below some subtree size, stop forking and run sequentially. If the threshold is too low, we waste time on overhead. If it's too high, we leave parallelism on the table. Finding and characterizing this tradeoff is a core part of the project.
-
-**Allocation pressure and garbage collection.** Purely functional trees allocate a new node for every `join`. In C++ (where the PAM library is implemented), allocation is cheap and there is no GC. In OCaml, every allocation interacts with the garbage collector. Under parallel execution with multiple domains, GC behavior becomes more complex — OCaml 5 uses a per-domain minor heap but a shared major heap. We expect GC to be a significant factor in parallel scaling, and diagnosing how much it matters is one of the key questions.
-
-**Irregular workload and load balancing.** The split operation divides a tree at a particular key, and the resulting halves may be very unequal. This means the forked sub-problems may have very different amounts of work, leading to load imbalance. Understanding how this affects speedup, and whether it can be mitigated, is another question.
-
-**Memory access patterns.** Tree data structures are pointer-heavy. Traversing a tree means following pointers that may point anywhere in memory, giving poor spatial locality compared to array-based structures. Under parallel execution on a multicore machine, this interacts with the cache hierarchy — each core's cache will see many misses. We want to measure and understand how this affects scaling.
-
-**Comparison with C++ runtime model.** The PAM library uses C++ with Cilk (a work-stealing scheduler) where spawning a parallel task is extremely lightweight. OCaml 5's domains are heavier-weight. This difference in task creation cost directly affects the optimal granularity threshold, the achievable speedup, and the scalability ceiling. Comparing the two runtimes on the same algorithmic framework isolates the effect of the language/runtime on parallel performance.
-
-## Resources
-
-**Hardware:** We'll use the GHC cluster machines, which have multicore CPUs suitable for shared-memory parallelism.
-
-**Starting code:** We'll start from OCaml's standard library `Set` and `Map` implementations (pure functional AVL trees) as the sequential baseline. The source is publicly available in the OCaml compiler repository. We'll implement the parallel versions ourselves.
-
-**Reference implementation:** The PAM C++ library (https://github.com/cmuparlay/PAM) will serve as a reference for correctness testing and performance comparison.
-
-**Key references:**
-
-1. Blelloch, Ferizovic, Sun. "Joinable Parallel Balanced Binary Trees." ACM TOPC, 2022. — The algorithmic framework: how `join`/`split` work, how bulk operations are parallelized, work/span bounds.
-2. Sun, Ferizovic, Blelloch. "PAM: Parallel Augmented Maps." PPoPP 2018. — The library design and interface, practical performance results in C++.
-3. Sun. "Join-based Parallel Balanced Binary Trees." PhD Thesis, CMU, 2018. — Comprehensive reference for algorithmic details.
-4. Sun, Blelloch. "Implementing Parallel and Concurrent Tree Structures." PPoPP 2019 Tutorial. — High-level overview of the framework.
-
-**Language/tools:** OCaml 5.x with the `Domain` module for parallelism. We may also use the `domainslib` library which provides a task pool and parallel primitives on top of raw domains.
-
-## Goals and Deliverables
-
-### Plan to Achieve
-
-- A working OCaml library implementing parallel `union`, `intersection`, `difference`, and `filter` for ordered sets, built on `join` and `split`, using OCaml 5 domains for parallelism.
-- Correctness validation against OCaml's standard library sequential implementations on a range of input sizes and distributions.
-- Speedup measurements across core counts (1, 2, 4, 8, 16+ cores) for each operation, on input sizes ranging from small (thousands) to large (millions of elements).
-- Analysis of granularity threshold: performance as a function of the sequential cutoff size, identifying the sweet spot and explaining why it falls where it does.
-- Analysis of scaling bottlenecks: is the limitation GC pressure, task creation overhead, load imbalance, or cache behavior? Provide measurements to support conclusions.
-- Comparison of our OCaml implementation's performance against the C++ PAM library on the same operations and input sizes, with discussion of what runtime/language factors explain the differences.
-
-### Hope to Achieve
-
-- Extend from sets to maps (maps add key-value pairs; the algorithms are nearly identical but involve slightly more bookkeeping).
-- Implement augmented maps — adding a cached subtree aggregate value maintained through `join` — and demonstrate a simple application such as range-sum queries.
-- Investigate whether alternative parallelism strategies (e.g., `domainslib` task pools vs. raw domain spawning) affect performance characteristics.
-
-### If Work Goes Slowly
-
-- Focus on parallel `union` only as the primary operation, with thorough performance analysis.
-- Deliver the comparison with sequential OCaml and C++ PAM on `union` alone, with detailed bottleneck analysis.
-
-### Poster Session
-
-We plan to show speedup graphs across core counts and input sizes, a granularity threshold sensitivity plot, and a comparative chart of OCaml vs. C++ PAM performance. The key narrative is: here is a well-studied parallel algorithm with known good performance in C++, and here is what happens when you implement it in a language with a very different runtime model.
-
-## Platform Choice
-
-OCaml 5 on shared-memory multicore CPUs is the right platform for this project for several reasons:
-
-1. **OCaml's standard library already uses AVL trees for sets and maps**, so we have a natural sequential baseline to compare against. We're parallelizing something that OCaml programmers actually use.
-
-2. **OCaml 5 introduced multicore support** via domains and effect handlers, making shared-memory parallelism possible for the first time in OCaml. This is a relatively new capability (stable since 2022), and there is genuine open interest in understanding how well parallel algorithms perform under OCaml's runtime model.
-
-3. **The contrast with C++ is the interesting part.** The PAM library demonstrates that these algorithms scale well in C++ with Cilk's lightweight work-stealing. OCaml's runtime has fundamentally different characteristics: a garbage collector that must coordinate across domains, heavier-weight task creation, and a purely functional allocation model that produces many short-lived objects. Running the same algorithm on both platforms isolates the effect of these runtime differences, which is directly relevant to the course theme of understanding how hardware and system characteristics affect parallel performance.
-
-4. **Purely functional trees are natural for fork-join parallelism.** Because the data structure is never mutated (every operation produces a new tree), there are no data races and no need for locks or synchronization. The parallelism comes entirely from the algorithmic structure — forking independent recursive calls. This fits cleanly into the fork-join model discussed in the course.
-
-## Rough Schedule
-
-### Week of 3/30 – 4/5
-- Complete literature review: read the Joinable Trees paper (algorithmic details for AVL join/split/union) and the PPoPP tutorial (high-level framework overview).
-- Study OCaml's standard library `Set` source code. Understand how their existing `union`, `inter`, `diff`, `split` work.
-- Set up OCaml 5 development environment and benchmark harness. Verify we can create domains and measure wall-clock time reliably.
-- Implement sequential `join` and `split` for AVL trees following the paper's algorithm (replacing OCaml's existing approach with the join-based structure). Test for correctness.
-
-### Week of 4/6 – 4/12
-- Implement parallel `union` using OCaml 5 domains, with a configurable granularity threshold.
-- Implement parallel `intersection`, `difference`, and `filter` following the same pattern.
-- Begin preliminary benchmarking: measure speedup on a few input sizes and core counts. Identify obvious performance problems.
-- Prepare milestone report with initial results.
-
-### Week of 4/13 – 4/19
-- Systematic performance evaluation: sweep across input sizes, core counts, and granularity thresholds.
-- Profile and diagnose scaling bottlenecks (GC time, allocation rates, task overhead). Use OCaml's runtime statistics and profiling tools.
-- Run comparison benchmarks against C++ PAM on the same workloads.
-- Begin writing the analysis sections of the final report.
-
-### Week of 4/20 – 4/26
-- If ahead of schedule: implement maps and/or augmented maps (stretch goals).
-- Finalize all benchmarks and analysis. Produce final graphs and figures.
-- Write final report and prepare poster materials. -->
 </div>
