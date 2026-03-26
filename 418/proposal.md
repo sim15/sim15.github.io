@@ -4,7 +4,7 @@ title: "15-418 project proposal"
 permalink: /418-project/proposal/
 ---
 
-<center><u>Project Proposal: Parallel Bulk Operations for Ordered Sets and Maps in OCaml</u></center>
+<center>Project Proposal: Parallel Bulk Operations for Ordered Sets and Maps in OCaml</center>
 
 
 <div style="text-align: justify;" markdown="1">
