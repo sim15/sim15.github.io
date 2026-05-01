@@ -11,6 +11,6 @@ permalink: /418-project/
 
 [Milestone Report](/418-project/milestone/)
 
-Final Report (soon)
+[Final Report](/418-project/report/)
 
 
