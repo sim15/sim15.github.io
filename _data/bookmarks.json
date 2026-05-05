@@ -379,5 +379,16 @@
     "type": "website",
     "waybackUrl": "http://web.archive.org/web/20250726032133/https://en.wikipedia.org/wiki/Full-employment_theorem",
     "altTitle": "Full-employment theorem - Wikipedia"
+  },
+  {
+    "title": "Why are neural networks and cryptographic ciphers so similar?",
+    "site": "Reiner’s webpage and articles.",
+    "author": "",
+    "date": "2026-05-05",
+    "timestamp": "2026-05-05T03:14:19.668Z",
+    "description": "Several neural network design principles are almost identical to cipher design principles.",
+    "url": "https://reiner.org/neural-net-ciphers",
+    "type": "",
+    "altTitle": "Why are neural networks and cryptographic ciphers so similar?"
   }
 ]
